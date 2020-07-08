@@ -53,7 +53,7 @@ var Geolocation = {
     * See https://facebook.github.io/react-native/docs/geolocation.html#setrnconfiguration
     *
     */
-  setRNConfiguration: function(
+  setRNConfiguration: function (
     config: GeoConfiguration
   ) {
     if (RCTLocationObserver.setConfiguration) {
@@ -66,16 +66,16 @@ var Geolocation = {
    *
    * See https://facebook.github.io/react-native/docs/geolocation.html#requestauthorization
    */
-  requestAuthorization: function() {
-    RCTLocationObserver.requestAuthorization();
-  },
+  // requestAuthorization: function() {
+  //   RCTLocationObserver.requestAuthorization();
+  // },
 
   /*
    * Invokes the success callback once with the latest location info.
    *
    * See https://facebook.github.io/react-native/docs/geolocation.html#getcurrentposition
    */
-  getCurrentPosition: async function(
+  getCurrentPosition: async function (
     geo_success: Function,
     geo_error?: Function,
     geo_options?: GeoOptions
@@ -112,7 +112,7 @@ var Geolocation = {
    *
    * See https://facebook.github.io/react-native/docs/geolocation.html#watchposition
    */
-  watchPosition: function(success: Function, error?: Function, options?: GeoOptions): number {
+  watchPosition: function (success: Function, error?: Function, options?: GeoOptions): number {
     if (!updatesEnabled) {
       RCTLocationObserver.startObserving(options || {});
       updatesEnabled = true;
@@ -131,7 +131,7 @@ var Geolocation = {
     return watchID;
   },
 
-  clearWatch: function(watchID: number) {
+  clearWatch: function (watchID: number) {
     var sub = subscriptions[watchID];
     if (!sub) {
       // Silently exit when the watchID is invalid or already cleared
@@ -154,7 +154,7 @@ var Geolocation = {
     }
   },
 
-  stopObserving: function() {
+  stopObserving: function () {
     if (updatesEnabled) {
       RCTLocationObserver.stopObserving();
       updatesEnabled = false;
